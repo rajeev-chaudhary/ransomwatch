@@ -10,17 +10,35 @@ def plot_posts_by_group():
     '''
     plot the number of posts by group in a barchart
     '''
+    np.random.seed(19680801)
+    
+    fig = plt.figure()
+    ax = fig.add_subplot(projection='3d')
+    colors = ['r', 'g', 'b', 'y']
+    
     posts = openjson('posts.json')
     group_counts = gcount(posts)
     group_counts = sorted(group_counts.items(), key=lambda x: x[1], reverse=True)
     group_counts = [x for x in group_counts if x[0] != 'clop']
     groups = [x[0] for x in group_counts]
     counts = [x[1] for x in group_counts]
-    plt.bar(groups, counts, color="#000000")
+
+    for c, k in zip(colors, counts):
+    # You can provide either a single color or an array with the same length as
+    # xs and ys. To demonstrate this, we color the first bar of each set cyan.
+        cs = [c] * len(xs)
+        cs[0] = 'c'
+
+    # Plot the bar graph given by xs and ys on the plane y=k with 80% opacity.
+        ax.bar(groups, counts, zs=k, zdir='y', color=cs, alpha=0.8)
+
+    ax.set_xlabel('group name')
+    ax.set_ylabel('# of posts')
+    ax.set_zlabel('Z')
+
+    # On the y axis let's only label the discrete values that we have data for.
+    ax.set_yticks(counts)
     plt.title('posts by group')
-    plt.xlabel('group name')
-    plt.xticks(rotation=90)
-    plt.ylabel('# of posts')
     plt.savefig('docs/graphs/postsbygroup.png',dpi=300, bbox_inches="tight", pad_inches=0.1, frameon=False, transparent=True)
     plt.clf()
     plt.cla()
