@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 
 from sharedutils import gcount
 from sharedutils import openjson
+import numpy as np
 
 def plot_posts_by_group():
     '''
