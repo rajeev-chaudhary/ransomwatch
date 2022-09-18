@@ -31,14 +31,14 @@ def plot_posts_by_group():
         cs[0] = 'c'
 
     # Plot the bar graph given by xs and ys on the plane y=k with 80% opacity.
-        ax.bar(counts, groups,zs=k, zdir='y', color=cs, alpha=0.8)
+        ax.bar(zs=k,groups,counts,  zdir='y', color=cs, alpha=0.8)
 
     ax.set_xlabel('group name')
     ax.set_ylabel('# of posts')
     ax.set_zlabel('Z')
 
     # On the y axis let's only label the discrete values that we have data for.
-    #ax.set_yticks(counts)
+    ax.set_yticks(groups)
     plt.title('posts by group')
     plt.savefig('docs/graphs/postsbygroup.png',dpi=300, bbox_inches="tight", pad_inches=0.1, frameon=False, transparent=True)
     plt.clf()
