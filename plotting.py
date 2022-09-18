@@ -27,7 +27,7 @@ def plot_posts_by_group():
     for c, k in zip(colors, counts):
     # You can provide either a single color or an array with the same length as
     # xs and ys. To demonstrate this, we color the first bar of each set cyan.
-        cs = [c] * len(xs)
+        cs = [c] * len(counts)
         cs[0] = 'c'
 
     # Plot the bar graph given by xs and ys on the plane y=k with 80% opacity.
