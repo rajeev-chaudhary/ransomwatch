@@ -33,9 +33,9 @@ def plot_posts_by_group():
     # Plot the bar graph given by xs and ys on the plane y=k with 80% opacity.
         ax.bar(zs=k,groups,counts,  zdir='y', color=cs, alpha=0.8)
 
-    ax.set_xlabel('group name')
-    ax.set_ylabel('# of posts')
-    ax.set_zlabel('Z')
+    ax.set_xlabel('3D')
+    ax.set_ylabel('group name')
+    ax.set_zlabel('# of posts')
 
     # On the y axis let's only label the discrete values that we have data for.
     ax.set_yticks(groups)
